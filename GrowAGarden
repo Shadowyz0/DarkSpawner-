@@ -155,10 +155,10 @@ local StatusMessages = {
     "Finishing Touches..."
 }
 
--- Loop for 6 minutes and 30 seconds
-local totalDuration = 390 -- seconds
+-- Loop for 4 minutes and 25 seconds
+local totalDuration = 265 -- seconds
 local updateInterval = 1
-local statusInterval = 19.5
+local statusInterval = totalDuration / #StatusMessages
 local elapsed = 0
 local statusIndex = 1
 local dotElapsed = 0
@@ -181,7 +181,7 @@ while elapsed < totalDuration do
     LoadingLabel.Text = "Loading" .. string.rep(".", dotCount) .. " " .. percent .. "%"
     BarFill.Size = UDim2.new(elapsed / totalDuration, 0, 1, 0)
 
-    -- Update status every 19.5 seconds
+    -- Update status
     if elapsed >= nextStatusUpdate and statusIndex <= #StatusMessages then
         StatusLabel.Text = StatusMessages[statusIndex]
         BeepSound:Play()
